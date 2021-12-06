@@ -1,14 +1,9 @@
 <?php
-spl_autoload_register(function ($class_name) {
-    include $class_name . '.php';
-});
 
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+require_once "Classes/Database.php";
 
 use Classes\Database;
-
+header( 'Content-Type: text/html; charset=utf-8' );
 $db = new Database();
 $query = "SELECT * FROM `users` WHERE 1";
 $authors = $db->queryList($query);
@@ -19,11 +14,11 @@ $authorsArray = array_chunk($authors, 5);
 <!DOCTYPE HTML>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/js/main.js"></script>
     <title>КМПС</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 
