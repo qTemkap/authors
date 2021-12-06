@@ -7,21 +7,23 @@ $useragent = $_SERVER['HTTP_USER_AGENT'];
 $timeout = 120;
 $dir = $_SERVER['DOCUMENT_ROOT'];
 
-$ch = curl_init("https://scholar.google.com.ua/citations?user=rtfQ0b8AAAAJ");
-curl_setopt($ch, CURLOPT_FAILONERROR, true);
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_ENCODING, "");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-curl_setopt($ch, CURLOPT_MAXREDIRS, 100);
-curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
+$dom = file_get_contents("https://scholar.google.com.ua/citations?user=rtfQ0b8AAAAJ");
+//curl_setopt($ch, CURLOPT_FAILONERROR, true);
+//curl_setopt($ch, CURLOPT_HEADER, 0);
+//curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+//curl_setopt($ch, CURLOPT_ENCODING, "");
+//curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+//curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+//curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+//curl_setopt($ch, CURLOPT_MAXREDIRS, 100);
+//curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
+//
+//
+//$dom = curl_exec($ch);
 
-
-$dom = curl_exec($ch);
-var_export($dom);
+$page = iconv('windows-1251', 'utf-8', $dom);
+var_export($page);
 
 
 $doc = new DOMDocument();
