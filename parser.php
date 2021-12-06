@@ -19,9 +19,9 @@ curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
 curl_setopt($ch, CURLOPT_MAXREDIRS, 100);
 curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
 
-var_export(curl_error($ch));
-$dom = curl_exec($ch);
 
+$dom = curl_exec($ch);
+var_export($dom);
 
 
 $doc = new DOMDocument();
