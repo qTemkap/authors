@@ -3,7 +3,6 @@
 require_once "Classes/Database.php";
 
 use Classes\Database;
-header( 'Content-Type: text/html; charset=utf-8' );
 $db = new Database();
 $query = "SELECT * FROM `users` WHERE 1";
 $authors = $db->queryList($query);
@@ -18,7 +17,6 @@ $authorsArray = array_chunk($authors, 5);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/js/main.js"></script>
     <title>КМПС</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 

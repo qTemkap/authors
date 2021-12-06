@@ -2,6 +2,9 @@
 
 namespace Classes;
 
+require_once "Classes/Interfaces/PlatformsInterface.php";
+require_once "Classes/SettingCookieParser.php";
+
 use Classes\Interfaces\PlatformsInterface;
 use Classes\SettingCookieParser;
 

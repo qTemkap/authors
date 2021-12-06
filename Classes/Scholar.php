@@ -2,6 +2,8 @@
 
 namespace Classes;
 
+require_once "Classes/Interfaces/PlatformsInterface.php";
+
 use Classes\Interfaces\PlatformsInterface;
 use DOMDocument;
 

@@ -2,6 +2,8 @@
 
 namespace Classes;
 
+require_once "Classes/Database.php";
+
 use Classes\Database;
 
 class CreateAuthor
