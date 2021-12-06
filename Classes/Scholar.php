@@ -16,10 +16,14 @@ class Scholar implements PlatformsInterface
     {
         $useragent = $_SERVER['HTTP_USER_AGENT'];
         $timeout = 120;
+        $dir = $_SERVER['DOCUMENT_ROOT'];
+
+        $cookie_file = $dir . '/cookies/google' . md5($_SERVER['HTTP_USER_AGENT']) . '.txt';
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_FAILONERROR, true);
         curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_ENCODING, "");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
