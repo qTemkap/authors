@@ -4,10 +4,10 @@
 
     class Database
     {
-        private $servername = "localhost";
-        private $username = "root";
-        private $password = "";
-        private $table = "articles";
+        private $servername = "eu-cdbr-west-01.cleardb.com";
+        private $username = "b37ad2ab8d073f";
+        private $password = "b5617e9a";
+        private $table = "heroku_faf106e3aa7606b";
 
         public $DB;
 
