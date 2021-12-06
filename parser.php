@@ -8,28 +8,30 @@ $timeout = 120;
 $dir = $_SERVER['DOCUMENT_ROOT'];
 
 
-function cURL($url){
-    $ch =  curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    $result =  curl_exec($ch);
-    curl_close($ch);
-    if ($result){
-        return $result;
-    }else{
-        return '';
-    }
-}
+$useragent = $_SERVER['HTTP_USER_AGENT'];
+$timeout = 120;
+$dir = $_SERVER['DOCUMENT_ROOT'];
 
-$json_file = cURL("https://scholar.google.com.ua/citations?user=rtfQ0b8AAAAJ");
+$cookie_file = $dir . '/cookies/google' . md5($_SERVER['HTTP_USER_AGENT']) . '.txt';
 
-var_export($json_file);
+$ch = curl_init("https://scholar.google.com.ua/citations?user=rtfQ0b8AAAAJ");
+curl_setopt($ch, CURLOPT_FAILONERROR, true);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_ENCODING, "");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+curl_setopt($ch, CURLOPT_MAXREDIRS, 100);
+curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
+
+$dom = curl_exec($ch);
+
+var_export($dom);
 
 exit();
-
 
 $doc = new DOMDocument();
 @$doc->loadHTML($dom);
