@@ -18,7 +18,7 @@ class Scholar implements PlatformsInterface
         $timeout = 120;
         $dir = $_SERVER['DOCUMENT_ROOT'];
 
-        $cookie_file = $dir . '/cookies/google' . md5($_SERVER['HTTP_USER_AGENT']) . '.txt';
+        $cookie_file = $dir . '/cookies/' . md5($_SERVER['HTTP_USER_AGENT']) . '.txt';
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_FAILONERROR, true);
